@@ -1,0 +1,4 @@
+#Thu Jan 26 20:31:08 CET 2023
+base.0=C\:\\android\\berg_counter-master(1) 2\\berg_counter-master\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
