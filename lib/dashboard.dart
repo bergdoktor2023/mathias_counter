@@ -9,16 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-const int elementCount = 25;
-
-
-
-
-
-
-
-
-
+const int elementCount = 39;
 
 
 class Dashboard extends StatefulWidget {
@@ -36,6 +27,7 @@ class Dashboard extends StatefulWidget {
 class DashboardState extends State<Dashboard> {
 
   bool showLoadingWidget = false;
+  TextEditingController numberInputTextEditController = TextEditingController();
 
   int? itnValue;
   int? lmValue;
@@ -47,6 +39,8 @@ class DashboardState extends State<Dashboard> {
   int? axbValue;
   int? isbValue;
   int? dibValue;
+  int? caudValue;
+  int? pwbValue;
   int? zvkValue;
   int? artValue;
   int? bronchoValue;
@@ -61,7 +55,13 @@ class DashboardState extends State<Dashboard> {
   int? kopfhalsValue;
   int? thoraxValue;
   int? ambulantValue;
-int? gesamtValue;
+  int? gesamtValues;
+  double? gesamt1800Values;
+  int? gesamtRegValue;
+  int? gesamtGynValue;
+  int? sectioValue;
+
+
 
   TextEditingController _urController = TextEditingController();
   TextEditingController _vornameController = TextEditingController();
@@ -77,31 +77,7 @@ int? gesamtValue;
 
   @override
   void initState() {
-    itnValue = widget.currentValues['ITN'];
-    lmValue = widget.currentValues['LM'];
-    videoValue = widget.currentValues['Video'];
-    fiberValue = widget.currentValues['Fiber'];
-    pdaValue = widget.currentValues['PDA'];
-    spaValue = widget.currentValues['SPA'];
-    nfbValue = widget.currentValues['NFB'];
-    axbValue = widget.currentValues['AXB'];
-    isbValue = widget.currentValues['ISB'];
-    dibValue = widget.currentValues['DIB'];
-    zvkValue = widget.currentValues['ZVK'];
-    artValue = widget.currentValues['ART'];
-    bronchoValue = widget.currentValues['Broncho'];
-    pleuraValue = widget.currentValues['Pleura'];
-    sectioitnValue = widget.currentValues['Sectio ITN'];
-    sectioregValue = widget.currentValues['Sectio Reg.'];
-    pdageburtValue = widget.currentValues['PDA Geburt'];
-    kindValue = widget.currentValues['Kind'];
-    abdomenValue = widget.currentValues['Abdomen'];
-    asa3Value = widget.currentValues['ASA 3'];
-    kopfValue = widget.currentValues['Kopf'];
-    kopfhalsValue = widget.currentValues['Kopf/Hals'];
-    thoraxValue = widget.currentValues['Thorax'];
-    ambulantValue = widget.currentValues['Ambulant'];
-    gesamtValue = widget.currentValues[('ITN'+'LM')];
+    initValues(widget.currentValues);
 
 
 
@@ -110,8 +86,70 @@ int? gesamtValue;
 
     super.initState();
   }
+  void initValues(Map<String, int> values) {
+    setState(() {
+      itnValue = values['ITN'];
+      lmValue = values['LM'];
+      videoValue = values['Video'];
+      fiberValue = values['Fiber'];
+      pdaValue = values['PDA'];
+      spaValue = values['SPA'];
+      nfbValue = values['NFB'];
+      axbValue = values['AXB'];
+      isbValue = values['ISB'];
+      dibValue = values['DIB'];
+      caudValue = values['Caud'];
+      pwbValue = values['PWB'];
+      gesamtRegValue = values['PWB']!+
+          values['Caud']!+
+          values['DIB']!+
+          values['ISB']!+
+          values['AXB']!+
+          values['NFB']!;
+
+      zvkValue = values['ZVK'];
+      artValue = values['ART'];
+      bronchoValue = values['Broncho'];
+      pleuraValue = values['Pleura'];
+      sectioitnValue = values['Sectio ITN'];
+      sectioregValue = values['Sectio Reg'];
+      pdageburtValue = values['PDA Geburt'];
+      sectioValue = values['Sectio Reg']!+values['Sectio ITN']!;
+      gesamtGynValue = values['PDA Geburt']!+values['Sectio Reg']!+values['Sectio ITN']!;
+      kindValue = values['Kind'];
+      abdomenValue = values['Abdomen'];
+      asa3Value = values['ASA 3'];
+      kopfValue = values['Kopf'];
+      kopfhalsValue = values['Kopf/Hals'];
+      thoraxValue = values['Thorax'];
+      ambulantValue = values['Ambulant'];
+      gesamt1800Values =  values['Gesamt']! / 1800;
+      gesamtValues = values["ITN"]! +
+          values["LM"]!+
+          values['PDA Geburt']!+
+          values['Pleura']!+
+          values['Broncho']!+
+          values['PWB']!+
+          values['Caud']!+
+          values['DIB']!+
+          values['ISB']!+
+          values['AXB']!+
+          values['NFB']!+
+          values['SPA']!+
+          values['PDA']!+
+          values['Fiber']!+
+          values['Video']!+
+          values['Sectio Reg']!+
+          values['Sectio ITN']!
+
+
+
+      ;
+    });
+  }
 
   Future<void> showFileWriteErrorDialog() async {
+
     return await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -138,6 +176,58 @@ int? gesamtValue;
 
 
 
+  Future<void> _showNumberInputDialog(
+      String groupName,
+      int currentNumber,
+      ) async {
+    return await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Aktueller Wert $currentNumber'),
+          content: TextField(
+            controller: numberInputTextEditController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              hintText: 'Neuer Wert',
+            ),
+          ),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Cancel'),
+              onPressed: () {
+                numberInputTextEditController.text = '';
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('OK'),
+              onPressed: () async {
+                int? newValue =
+                int.tryParse(numberInputTextEditController.text);
+                if (newValue != null) {
+                  dbSet(groupName, newValue);
+                }
+                var newDbValues = await dbReadAll();
+                initValues(newDbValues);
+                numberInputTextEditController.text = '';
+                if (mounted) {
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
 
@@ -149,6 +239,7 @@ int? gesamtValue;
     SharedPreferences.getInstance();
     String? ur = prefs.getString("ur");
     final Uri _url = Uri.parse("$ur");
+    final Uri _urlLernziel = Uri.parse("https://drive.google.com/drive/folders/1RFLifARLch0sIaFIHGUzw_tMmSy-oWj6?usp=share_link");
 
 
     Future<void> _launchUrl() async {
@@ -157,13 +248,19 @@ int? gesamtValue;
         throw Exception('Could not launch $_url');
       }
     }
-
+    Future<void> _launchUrlLernziel() async {
+      if (!await launchUrl(_urlLernziel));
+      {
+        throw Exception('Could not launch $_urlLernziel');
+      }
+    }
     return await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Was möchstest Du tun?'),
           actions: <Widget>[
+
             TextButton(
               style: TextButton.styleFrom(
                 textStyle: Theme.of(context).textTheme.labelLarge,
@@ -181,6 +278,14 @@ int? gesamtValue;
               ),
               child: const Text('zu meinem Dashboard'),
               onPressed: _launchUrl
+            ),
+            TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('zum Lernzielkatalog'),
+                onPressed: _launchUrlLernziel
+
             ),
             TextButton(
               style: TextButton.styleFrom(
@@ -212,7 +317,7 @@ int? gesamtValue;
       String? name = prefs.getString("name");
 
     final Email email = Email(
-      body: "Zahlen von $vorname$name",
+      body: "Zahlen von $vorname $name",
       subject: "Dashboardnummer: $dashboardnummer",
       recipients: ['sbergao@gmail.com'],
       attachmentPaths: [attachmentPath],
@@ -282,6 +387,7 @@ int? gesamtValue;
   }
 
   void _loadSavedData() async {
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _urController.text = prefs.getString("ur") ?? "";
     _nameController.text = prefs.getString("name") ?? "";
@@ -294,39 +400,16 @@ int? gesamtValue;
 
   @override
   Widget build(BuildContext context) {
-    final Uri _url = Uri.parse('https://drive.google.com/drive/folders/1RFLifARLch0sIaFIHGUzw_tMmSy-oWj6?usp=share_link');
-
-    Future<void> _launchUrl() async {
-      if (!await launchUrl(_url)) {
-        throw Exception('Could not launch $_url');
-
-      }
-    }
 
 
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blueGrey.shade900,
 
-
-      appBar: AppBar(
-
-        backgroundColor: Colors.blueGrey.shade900,
-
-        centerTitle: false,
+        centerTitle: true,
         title: const Text('Dashboard Anästhesie',),
 
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.article),
-            onPressed: _launchUrl
-          ),
-
-          IconButton(
-              icon: Icon(Icons.article),
-              onPressed: _launchUrl
-          ),
-
-
-
           IconButton(
             icon: Icon(Icons.perm_identity),
             onPressed: () async {
@@ -380,12 +463,11 @@ int? gesamtValue;
           ),
 
 
+
+
         ],
 
       ),
-
-
-
 
 
 
@@ -402,76 +484,60 @@ int? gesamtValue;
           : ListView(
 
               children: [
+                const SizedBox(height: 2),
                 ListContainer(
-                  itemIndex: 1,
-                  containerColor: Colors.purple.shade100,
-                  groupText: 'IIIIITN',
-                  currentCount: itnValue?? 0,
-                  onDecrementClicked: (oldValue) async {
-                    int newValue = oldValue -= 1;
-                    await dbSet('ITN',newValue);
-                    await dbSet('LM',newValue);
-
-                    setState(() {
-                      itnValue= newValue;
-                      lmValue= newValue;
-
-                    });
-                  },
-                  onIncrementClicked: (oldValue) async {
-                    int newValue = oldValue += 1;
-                    await dbSet('ITN', newValue);
-                    setState(() {
-                      itnValue = newValue;
-                      const LinearProgressIndicator(value: 0.1,);
-                    });
-                  },
-                ),
-
-
-                ListContainer(
-                  itemIndex: 1,
-                  containerColor: Colors.purple.shade100,
+                  containerColor: Color.fromRGBO(39, 89, 99, 50),
                   groupText: 'ITN',
                   currentCount: itnValue?? 0,
                   onDecrementClicked: (oldValue) async {
                     int newValue = oldValue -= 1;
-                    await dbSet('ITN',newValue);
+                    await dbSet('ITN', newValue);
 
                     setState(() {
-                      itnValue= newValue;
+                      itnValue = newValue;
 
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
+
                   onIncrementClicked: (oldValue) async {
                     int newValue = oldValue += 1;
                     await dbSet('ITN', newValue);
                     setState(() {
                       itnValue = newValue;
-                     const LinearProgressIndicator(value: 0.1,);
+
+
+
                     });
                   },
                 ),
 
+
                 const SizedBox(height: 1),
+
                 ListContainer(
 
-                  itemIndex: 1,
-                  containerColor: Colors.purple.shade100,
+
+                  containerColor: Color.fromRGBO(39, 89, 99, 50),
                   groupText: 'LM',
+
                   currentCount: lmValue?? 0,
                   onDecrementClicked: (oldValue) async {
                     int newValue = oldValue -= 1;
                     await dbSet('LM', newValue);
 
-
-
-
                     setState(() {
                       lmValue = newValue;
 
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                   onIncrementClicked: (oldValue) async {
                     int newValue = oldValue += 1;
                     await dbSet('LM', newValue);
@@ -485,8 +551,7 @@ int? gesamtValue;
                 const SizedBox(height: 1),
 
                 ListContainer(
-                  itemIndex: 2,
-                  containerColor: Colors.purple.shade100,
+                  containerColor:Color.fromRGBO(39, 89, 99, 50),
                   groupText: 'Video',
                   currentCount: videoValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -504,12 +569,15 @@ int? gesamtValue;
                       videoValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
 
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 3,
-                  containerColor: Colors.purple.shade100,
+                  containerColor:  Color.fromRGBO(39, 89, 99, 50),
                   groupText: 'Fiber',
                   currentCount: fiberValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -526,11 +594,13 @@ int? gesamtValue;
                       fiberValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 4,
-                  containerColor: Colors.teal.shade300,
+                  containerColor:  Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'PDA',
                   currentCount: pdaValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -547,11 +617,14 @@ int? gesamtValue;
                       pdaValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 4,
-                  containerColor: Colors.teal.shade300,
+                  containerColor: Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'SPA',
                   currentCount: spaValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -568,11 +641,14 @@ int? gesamtValue;
                       spaValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 4,
-                  containerColor: Colors.teal.shade300,
+                  containerColor:Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'NFB',
                   currentCount: nfbValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -589,11 +665,13 @@ int? gesamtValue;
                       nfbValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.teal.shade300,
+                  containerColor: Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'AXB',
                   currentCount: axbValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -610,11 +688,13 @@ int? gesamtValue;
                       axbValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.teal.shade300,
+                  containerColor:Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'ISB',
                   currentCount: isbValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -631,11 +711,14 @@ int? gesamtValue;
                       isbValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.teal.shade300,
+                  containerColor: Color.fromRGBO(29, 29, 58, 50),
                   groupText: 'DIB',
                   currentCount: dibValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -652,11 +735,63 @@ int? gesamtValue;
                       dibValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.greenAccent,
+                  containerColor: Color.fromRGBO(29, 29, 58, 50),
+                  groupText: 'Caud',
+                  currentCount: caudValue ?? 0,
+                  onDecrementClicked: (oldValue) async {
+                    int newValue = oldValue -= 1;
+                    await dbSet('Caud', newValue);
+                    setState(() {
+                      dibValue = newValue;
+                    });
+                  },
+                  onIncrementClicked: (oldValue) async {
+                    int newValue = oldValue += 1;
+                    await dbSet('Caud', newValue);
+                    setState(() {
+                      caudValue = newValue;
+                    });
+                  },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
+                ),
+                const SizedBox(height: 1),
+
+                ListContainer(
+                  containerColor: Color.fromRGBO(29, 29, 58, 50),
+                  groupText: 'PWB',
+                  currentCount: pwbValue ?? 0,
+                  onDecrementClicked: (oldValue) async {
+                    int newValue = oldValue -= 1;
+                    await dbSet('PWB', newValue);
+                    setState(() {
+                      pwbValue = newValue;
+                    });
+                  },
+                  onIncrementClicked: (oldValue) async {
+                    int newValue = oldValue += 1;
+                    await dbSet('PWB', newValue);
+                    setState(() {
+                      pwbValue = newValue;
+                    });
+                  },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
+                ),
+                const SizedBox(height: 1),
+                ListContainer(
+                  containerColor: Color.fromRGBO(252,172,100, 10),
                   groupText: 'ZVK',
                   currentCount: zvkValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -673,11 +808,15 @@ int? gesamtValue;
                       zvkValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.greenAccent,
+                  containerColor: Color.fromRGBO(252,172,100, 10),
+
                   groupText: 'ART',
                   currentCount: artValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -694,11 +833,15 @@ int? gesamtValue;
                       artValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.greenAccent,
+                  containerColor: Color.fromRGBO(252,172,100, 10),
+
                   groupText: 'Broncho',
                   currentCount: bronchoValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -715,11 +858,15 @@ int? gesamtValue;
                       bronchoValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.greenAccent,
+                  containerColor: Color.fromRGBO(252,172,100, 10),
+
                   groupText: 'Pleura',
                   currentCount: pleuraValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -736,11 +883,15 @@ int? gesamtValue;
                       pleuraValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
+
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.lime.shade100,
+                  containerColor: Color.fromRGBO(142,187,167, 50),
                   groupText: 'Sectio ITN',
                   currentCount: sectioitnValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -757,33 +908,39 @@ int? gesamtValue;
                       sectioitnValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.lime.shade100,
-                  groupText: 'Sectio Reg.',
+                  containerColor: Color.fromRGBO(142,187,167, 50),
+                  groupText: 'Sectio Reg',
                   currentCount: sectioregValue ?? 0,
                   onDecrementClicked: (oldValue) async {
                     int newValue = oldValue -= 1;
-                    await dbSet('Sectio Reg.', newValue);
+                    await dbSet('Sectio Reg', newValue);
                     setState(() {
                       sectioregValue = newValue;
                     });
                   },
                   onIncrementClicked: (oldValue) async {
                     int newValue = oldValue += 1;
-                    await dbSet('Sectio Reg.', newValue);
+                    await dbSet('Sectio Reg', newValue);
                     setState(() {
                       sectioregValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
 
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.lime.shade100,
+                  containerColor: Color.fromRGBO(142,187,167, 50),
                   groupText: 'PDA Geburt',
                   currentCount: pdageburtValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -800,11 +957,14 @@ int? gesamtValue;
                       pdageburtValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.lime.shade100,
+                  containerColor: Color.fromRGBO(142,187,167, 50),
                   groupText: 'Kind',
                   currentCount: kindValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -821,11 +981,14 @@ int? gesamtValue;
                       kindValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'Abdomen',
                   currentCount: abdomenValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -842,12 +1005,15 @@ int? gesamtValue;
                       abdomenValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
 
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'ASA 3',
                   currentCount: asa3Value ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -864,11 +1030,13 @@ int? gesamtValue;
                       asa3Value = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'Kopf',
                   currentCount: kopfValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -885,11 +1053,14 @@ int? gesamtValue;
                       kopfValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'Kopf/Hals',
                   currentCount: kopfhalsValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -906,11 +1077,14 @@ int? gesamtValue;
                       kopfhalsValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'Thorax',
                   currentCount: thoraxValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -927,11 +1101,14 @@ int? gesamtValue;
                       thoraxValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
                 ),
                 const SizedBox(height: 1),
                 ListContainer(
-                  itemIndex: 0,
-                  containerColor: Colors.indigo.shade100,
+                  containerColor: Color.fromRGBO(110, 100, 200, 100),
                   groupText: 'Ambulant',
                   currentCount: ambulantValue ?? 0,
                   onDecrementClicked: (oldValue) async {
@@ -948,9 +1125,280 @@ int? gesamtValue;
                       ambulantValue = newValue;
                     });
                   },
+                  onEditNumberClicked: (groupSource, currentValue) async {
+                    await _showNumberInputDialog(groupSource, currentValue);
+                  },
+
+
+
+
+
+
+
+                ),
+                const SizedBox(height: 60),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 60,
+                      child: LinearProgressIndicator(
+                        value: gesamtValues!/1800,
+                        backgroundColor: Colors.blueGrey.shade900,
+                        color: Colors.lightGreen.shade900,
+
+                      ),
+
+                    ),      Align(child: Text("GESAMT   :   ""$gesamtValues " " / 1800",  style: TextStyle(fontSize: 30, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.5, ),
+
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: gesamtRegValue!/50,
+                        backgroundColor:Color.fromRGBO(29, 29, 58, 100),
+                        color: Color.fromRGBO(29, 29, 58, 50),
+
+                      ),
+
+                    ),      Align(child: Text("Regionalanästhesie : ""$gesamtRegValue " " / 50",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: zvkValue!/30,
+                        backgroundColor: Color.fromRGBO(252,172,100, 100),
+                        color: Color.fromRGBO(252,172,100, 1),
+
+                      ),
+
+                    ),      Align(child: Text("ZVK : ""$zvkValue " " / 30",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
                 ),
                 const SizedBox(height: 1),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: artValue!/30,
+                        backgroundColor: Color.fromRGBO(252,172,100, 100),
+                        color: Color.fromRGBO(252,172,100, 1),
+
+                      ),
+
+                    ),      Align(child: Text("ART : ""$artValue " " / 30",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: bronchoValue!/25,
+                        backgroundColor: Color.fromRGBO(252,172,100, 100),
+                        color: Color.fromRGBO(252,172,100, 1),
+
+                      ),
+
+                    ),      Align(child: Text("Broncho : ""$bronchoValue " " / 25",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: pleuraValue!/5,
+                        backgroundColor: Color.fromRGBO(252,172,100, 100),
+                        color: Color.fromRGBO(252,172,100, 1),
+                      ),
+
+                    ),      Align(child: Text("Pleura : ""$pleuraValue " " / 5",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: gesamtGynValue!/50,
+                        backgroundColor: Color.fromRGBO(142,187,167, 100),
+                        color:  Color.fromRGBO(142,187,167, 1),
+
+                      ),
+
+                    ),      Align(child: Text("Geburtshilfe : ""$gesamtGynValue " " / 50",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: sectioValue!/25,
+                        backgroundColor: Color.fromRGBO(142,187,167, 100),
+                        color:  Color.fromRGBO(142,187,167, 1),
+
+                      ),
+
+                    ),      Align(child: Text("Sectio : ""$sectioValue " " / 25",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: kindValue!/50,
+                        backgroundColor: Color.fromRGBO(142,187,167, 100),
+                        color:  Color.fromRGBO(142,187,167, 1),
+
+                      ),
+
+                    ),      Align(child: Text("Kindernarkosen : ""$kindValue " " / 50",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: abdomenValue!/300,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+
+                      ),
+
+                    ),      Align(child: Text("Abdomen : ""$abdomenValue " " / 300",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: asa3Value!/100,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+
+                      ),
+
+                    ),      Align(child: Text("ASA 3 : ""$asa3Value " " / 100",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: kopfValue!/25,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+
+                      ),
+
+                    ),      Align(child: Text("Kopf : ""$kopfValue " " / 25",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: kopfhalsValue!/100,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+                      ),
+
+                    ),      Align(child: Text("Kopf/Hals : ""$kopfValue " " / 100",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: thoraxValue!/25,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+
+                      ),
+
+                    ),      Align(child: Text("Thorax : ""$thoraxValue " " / 25",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 1.8, ),
+
+                  ],
+                ),
+                const SizedBox(height: 1),
+
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+
+                      height: 45,
+                      child: LinearProgressIndicator(
+                        value: ambulantValue!/50,
+                        backgroundColor: Color.fromRGBO(110, 100, 200, 100),
+                        color: Color.fromRGBO(110, 100, 200, 20),
+                      ),
+
+                    ),      Align(child: Text("Ambulant : ""$ambulantValue " " / 50",  style: TextStyle(fontSize: 20, color: Colors.white), ), alignment: Alignment.center, heightFactor: 2.5, ),
+
+                  ],
+                ),
               ],
             ));
   }
 }
+

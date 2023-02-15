@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
 
   var savedValues = await dbReadAll();
 

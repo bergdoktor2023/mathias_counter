@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "_flutterfire_internals",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/_flutterfire_internals-1.0.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/archive-3.3.5",
       "packageUri": "lib/",
@@ -92,6 +98,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "firebase_auth",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-4.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-6.11.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-5.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "firebase_core",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "firebase_core_web",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/sberg/Documents/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -122,10 +164,22 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "http_parser",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "image",
       "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/sberg/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "js",
@@ -440,7 +494,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-26T19:28:43.359600Z",
+  "generated": "2023-02-15T08:32:14.570081Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

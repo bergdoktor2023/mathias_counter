@@ -32,12 +32,14 @@ Future<Map<String, int>> dbReadAll() async {
   var axbValue = await dbRead('AXB');
   var isbValue = await dbRead('ISB');
   var dibValue = await dbRead('DIB');
+  var caudValue = await dbRead('Caud');
+  var pwbValue = await dbRead('PWB');
   var zvkValue = await dbRead('ZVK');
   var artValue = await dbRead('ART');
   var bronchoValue = await dbRead('Broncho');
   var pleuraValue = await dbRead('Pleura');
   var sectioitnValue = await dbRead('Sectio ITN');
-  var sectioregValue = await dbRead('Sectio Reg.');
+  var sectioregValue = await dbRead('Sectio Reg');
   var pdageburtValue = await dbRead('PDA Geburt');
   var kindValue = await dbRead('Kind');
   var abdomenValue = await dbRead('Abdomen');
@@ -46,8 +48,11 @@ Future<Map<String, int>> dbReadAll() async {
   var kopfhalsValue = await dbRead('Kopf/Hals');
   var thoraxValue = await dbRead('Thorax');
   var ambulantValue = await dbRead('Ambulant') ;
-
-
+  var gesamtValue = await dbRead('Gesamt') ;
+  var gesamt1800Value = await dbRead('Gesamt1800') ;
+  var gesamtRegValue = await dbRead('GesamtReg') ;
+  var gesamtGynValue = await dbRead('GynGesamt') ;
+  var sectioValue = await dbRead('Sectio') ;
   // var pdaValue = await dbRead('');
   //...
 
@@ -62,12 +67,14 @@ Future<Map<String, int>> dbReadAll() async {
     'AXB': axbValue,
     'ISB': isbValue,
     'DIB': dibValue,
+    'Caud': caudValue,
+    'PWB': pwbValue,
     'ZVK': zvkValue,
     'ART': artValue,
     'Broncho': bronchoValue,
     'Pleura': pleuraValue,
     'Sectio ITN': sectioitnValue,
-    'Sectio Reg.': sectioregValue,
+    'Sectio Reg': sectioregValue,
     'PDA Geburt': pdageburtValue,
     'Kind': kindValue,
     'Abdomen': abdomenValue,
@@ -75,6 +82,13 @@ Future<Map<String, int>> dbReadAll() async {
     'Kopf': kopfValue,
     'Kopf/Hals': kopfhalsValue,
     'Thorax': thoraxValue,
-    'Ambulatn': ambulantValue,
+    'Ambulant': ambulantValue,
+    'Gesamt': gesamtValue,
+    'Gesamt1800': gesamt1800Value,
+    'Gesamtreg': gesamtRegValue,
+    'gesamtGynValue': gesamtGynValue,
+    'gesamtRegValue': gesamtRegValue,
+    'sectioValue': sectioValue,
+
   };
 }

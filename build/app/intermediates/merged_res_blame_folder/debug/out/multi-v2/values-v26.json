@@ -4,7 +4,7 @@
             "outputFile": "C:\\android\\berg_counter-master(1) 2\\berg_counter-master\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sberg\\.gradle\\caches\\transforms-3\\ea6751acb56b0b88131e2e20244ba024\\transformed\\appcompat-1.5.1\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\sberg\\.gradle\\caches\\transforms-3\\d6d1e11dd3c8926901f8e52a7c4db12a\\transformed\\appcompat-1.5.1\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

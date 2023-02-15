@@ -1,11 +1,11 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.berg_test"
-4    android:versionCode="1"
-5    android:versionName="1.0.0" >
+3    package="com.app.berg_test"
+4    android:versionCode="21"
+5    android:versionName="1.4.21" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="19"
 9        android:targetSdkVersion="31" />
 10    <!--
 11         The INTERNET permission is required for development. Specifically,
@@ -13,127 +13,255 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:4:5-66
+15-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:4:22-64
 16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 16-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:3:5-81
 16-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:3:22-78
 17
 18    <queries>
-18-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:4:5-9:15
+18-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:6:5-11:15
 19        <intent>
-19-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:5:9-8:18
+19-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:7:9-10:18
 20            <action android:name="android.intent.action.SENDTO" />
-20-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:6:13-67
-20-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:6:21-64
+20-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:8:13-67
+20-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:8:21-64
 21
 22            <data android:scheme="mailto" />
-22-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:7:13-45
-22-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:7:19-42
+22-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:13-45
+22-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:19-42
 23        </intent>
 24    </queries>
 25
-26    <application
-27        android:name="android.app.Application"
-28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.8.0] C:\Users\sberg\.gradle\caches\transforms-3\d363e3b5616f580c766e3e2b3c05f27d\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
-29        android:debuggable="true"
-30        android:icon="@mipmap/ic_launcher"
-31        android:label="Anästhesie" >
-32        <activity
-33            android:name="com.example.berg_test.MainActivity"
-34            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-35            android:exported="true"
-36            android:hardwareAccelerated="true"
-37            android:launchMode="singleTop"
-38            android:theme="@style/LaunchTheme"
-39            android:windowSoftInputMode="adjustResize" >
-40
-41            <!--
-42                 Specifies an Android theme to apply to this Activity as soon as
-43                 the Android process has started. This theme is visible to the user
-44                 while the Flutter UI initializes. After that, this theme continues
-45                 to determine the Window background behind the Flutter UI.
-46            -->
-47            <meta-data
-48                android:name="io.flutter.embedding.android.NormalTheme"
-49                android:resource="@style/NormalTheme" />
-50
-51            <intent-filter>
-52                <action android:name="android.intent.action.MAIN" />
-53
-54                <category android:name="android.intent.category.LAUNCHER" />
-55            </intent-filter>
-56        </activity>
-57        <!--
-58             Don't delete the meta-data below.
-59             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-60        -->
-61        <meta-data
-62            android:name="flutterEmbedding"
-63            android:value="2" />
-64
-65        <provider
-65-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
-66            android:name="com.sidlatau.flutteremailsender.FlutterEmailSenderFileProvider"
-66-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-90
-67            android:authorities="com.example.berg_test.file_provider"
-67-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-65
-68            android:exported="false"
-68-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
-69            android:grantUriPermissions="true" >
-69-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
-70            <meta-data
-70-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:61
-71                android:name="android.support.FILE_PROVIDER_PATHS"
-71-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
-72                android:resource="@xml/shared_file_paths" />
-72-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-58
-73        </provider>
-74
-75        <activity
-75-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
-76            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-76-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
-77            android:exported="false"
-77-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
-78            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-78-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
-79
-80        <uses-library
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-81            android:name="androidx.window.extensions"
-81-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-82            android:required="false" />
-82-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-83        <uses-library
-83-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-84            android:name="androidx.window.sidecar"
-84-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-85            android:required="false" />
-85-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-86
-87        <provider
-87-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-88            android:name="androidx.startup.InitializationProvider"
-88-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-89            android:authorities="com.example.berg_test.androidx-startup"
-89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
-90            android:exported="false" >
-90-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
-91            <meta-data
-91-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-92                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-92-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-93                android:value="androidx.startup" />
-93-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\9fc546b4b41c30406c1c6f8de93a0c6d\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-94            <meta-data
-94-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\c7dc2d946f639e7b414f5fbe78913a76\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
-95                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-95-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\c7dc2d946f639e7b414f5fbe78913a76\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
-96                android:value="androidx.startup" />
-96-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\c7dc2d946f639e7b414f5fbe78913a76\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
-97        </provider>
-98    </application>
-99
-100</manifest>
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:24:5-79
+26-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:24:22-76
+27
+28    <application
+29        android:name="android.app.Application"
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.8.0] C:\Users\sberg\.gradle\caches\transforms-3\90f2baccc3b906b0942965ddd047e2c3\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+31        android:debuggable="true"
+32        android:icon="@mipmap/ic_launcher"
+33        android:label="Anästhesie" >
+34        <activity
+35            android:name="com.app.berg_test.MainActivity"
+36            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+37            android:exported="true"
+38            android:hardwareAccelerated="true"
+39            android:launchMode="singleTop"
+40            android:theme="@style/LaunchTheme"
+41            android:windowSoftInputMode="adjustResize" >
+42
+43            <!--
+44                 Specifies an Android theme to apply to this Activity as soon as
+45                 the Android process has started. This theme is visible to the user
+46                 while the Flutter UI initializes. After that, this theme continues
+47                 to determine the Window background behind the Flutter UI.
+48            -->
+49            <meta-data
+50                android:name="io.flutter.embedding.android.NormalTheme"
+51                android:resource="@style/NormalTheme" />
+52
+53            <intent-filter>
+54                <action android:name="android.intent.action.MAIN" />
+55
+56                <category android:name="android.intent.category.LAUNCHER" />
+57            </intent-filter>
+58        </activity>
+59        <!--
+60             Don't delete the meta-data below.
+61             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+62        -->
+63        <meta-data
+64            android:name="flutterEmbedding"
+65            android:value="2" />
+66
+67        <service
+67-->[:firebase_auth] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+68            android:name="com.google.firebase.components.ComponentDiscoveryService"
+68-->[:firebase_auth] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+69            android:directBootAware="true"
+69-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:34:13-43
+70            android:exported="false" >
+70-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:66:13-37
+71            <meta-data
+71-->[:firebase_auth] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+72                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+72-->[:firebase_auth] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+73                android:value="com.google.firebase.components.ComponentRegistrar" />
+73-->[:firebase_auth] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+74            <meta-data
+74-->[:firebase_core] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+75                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+75-->[:firebase_core] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+76                android:value="com.google.firebase.components.ComponentRegistrar" />
+76-->[:firebase_core] C:\android\berg_counter-master(1) 2\berg_counter-master\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+77            <meta-data
+77-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:67:13-69:85
+78                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+78-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:68:17-109
+79                android:value="com.google.firebase.components.ComponentRegistrar" />
+79-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:69:17-82
+80        </service>
+81
+82        <provider
+82-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+83            android:name="com.sidlatau.flutteremailsender.FlutterEmailSenderFileProvider"
+83-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-90
+84            android:authorities="com.app.berg_test.file_provider"
+84-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-65
+85            android:exported="false"
+85-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+86            android:grantUriPermissions="true" >
+86-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+87            <meta-data
+87-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:61
+88                android:name="android.support.FILE_PROVIDER_PATHS"
+88-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+89                android:resource="@xml/shared_file_paths" />
+89-->[:flutter_email_sender] C:\android\berg_counter-master(1) 2\berg_counter-master\build\flutter_email_sender\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-58
+90        </provider>
+91
+92        <activity
+92-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+93            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+93-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+94            android:exported="false"
+94-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+95            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+95-->[:url_launcher_android] C:\android\berg_counter-master(1) 2\berg_counter-master\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+96
+97        <uses-library
+97-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+98            android:name="androidx.window.extensions"
+98-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+99            android:required="false" />
+99-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+100        <uses-library
+100-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+101            android:name="androidx.window.sidecar"
+101-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+102            android:required="false" />
+102-->[androidx.window:window:1.0.0-beta04] C:\Users\sberg\.gradle\caches\transforms-3\c2f300af52ee5aa668c25773af4de8ab\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+103
+104        <activity
+104-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:27:9-44:20
+105            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+105-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:28:13-80
+106            android:excludeFromRecents="true"
+106-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:29:13-46
+107            android:exported="true"
+107-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:30:13-36
+108            android:launchMode="singleTask"
+108-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:31:13-44
+109            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+109-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:32:13-72
+110            <intent-filter>
+110-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:33:13-43:29
+111                <action android:name="android.intent.action.VIEW" />
+111-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:17-69
+111-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:25-66
+112
+113                <category android:name="android.intent.category.DEFAULT" />
+113-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:17-76
+113-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:27-73
+114                <category android:name="android.intent.category.BROWSABLE" />
+114-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:17-78
+114-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:27-75
+115
+116                <data
+116-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:13-45
+117                    android:host="firebase.auth"
+118                    android:path="/"
+119                    android:scheme="genericidp" />
+119-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:19-42
+120            </intent-filter>
+121        </activity>
+122        <activity
+122-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:45:9-62:20
+123            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+123-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:46:13-79
+124            android:excludeFromRecents="true"
+124-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:47:13-46
+125            android:exported="true"
+125-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:48:13-36
+126            android:launchMode="singleTask"
+126-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:49:13-44
+127            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+127-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:50:13-72
+128            <intent-filter>
+128-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:51:13-61:29
+129                <action android:name="android.intent.action.VIEW" />
+129-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:17-69
+129-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:25-66
+130
+131                <category android:name="android.intent.category.DEFAULT" />
+131-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:17-76
+131-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:27-73
+132                <category android:name="android.intent.category.BROWSABLE" />
+132-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:17-78
+132-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\sberg\.gradle\caches\transforms-3\72c6ff81a386eb632b29a073af039d91\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:27-75
+133
+134                <data
+134-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:13-45
+135                    android:host="firebase.auth"
+136                    android:path="/"
+137                    android:scheme="recaptcha" />
+137-->C:\android\berg_counter-master(1) 2\berg_counter-master\android\app\src\main\AndroidManifest.xml:9:19-42
+138            </intent-filter>
+139        </activity>
+140
+141        <provider
+141-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:25:9-30:39
+142            android:name="com.google.firebase.provider.FirebaseInitProvider"
+142-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:26:13-77
+143            android:authorities="com.app.berg_test.firebaseinitprovider"
+143-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:27:13-72
+144            android:directBootAware="true"
+144-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:28:13-43
+145            android:exported="false"
+145-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:29:13-37
+146            android:initOrder="100" />
+146-->[com.google.firebase:firebase-common:20.3.0] C:\Users\sberg\.gradle\caches\transforms-3\009fc98b878148b73227e34f0f0aa75e\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:30:13-36
+147
+148        <activity
+148-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\sberg\.gradle\caches\transforms-3\ed0bcafb61d04a4de8b904d89823ca86\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+149            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+149-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\sberg\.gradle\caches\transforms-3\ed0bcafb61d04a4de8b904d89823ca86\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+150            android:exported="false"
+150-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\sberg\.gradle\caches\transforms-3\ed0bcafb61d04a4de8b904d89823ca86\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+151            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+151-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\sberg\.gradle\caches\transforms-3\ed0bcafb61d04a4de8b904d89823ca86\transformed\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+152
+153        <meta-data
+153-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\sberg\.gradle\caches\transforms-3\dfcd0a23c23253a4744dd79b1b0d8a5e\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+154            android:name="com.google.android.gms.version"
+154-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\sberg\.gradle\caches\transforms-3\dfcd0a23c23253a4744dd79b1b0d8a5e\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+155            android:value="@integer/google_play_services_version" />
+155-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\sberg\.gradle\caches\transforms-3\dfcd0a23c23253a4744dd79b1b0d8a5e\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+156
+157        <provider
+157-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+158            android:name="androidx.startup.InitializationProvider"
+158-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+159            android:authorities="com.app.berg_test.androidx-startup"
+159-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+160            android:exported="false" >
+160-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+161            <meta-data
+161-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+162                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+162-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+163                android:value="androidx.startup" />
+163-->[androidx.emoji2:emoji2:1.2.0] C:\Users\sberg\.gradle\caches\transforms-3\1749530f053f3e6fd6dae3911b44b565\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+164            <meta-data
+164-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\5e6bfe11023116ada73a87cfe928e015\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+165                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+165-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\5e6bfe11023116ada73a87cfe928e015\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+166                android:value="androidx.startup" />
+166-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\sberg\.gradle\caches\transforms-3\5e6bfe11023116ada73a87cfe928e015\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+167        </provider>
+168    </application>
+169
+170</manifest>

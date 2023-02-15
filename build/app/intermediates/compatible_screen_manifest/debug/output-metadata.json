@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.berg_test",
+  "applicationId": "com.app.berg_test",
   "variantName": "debug",
   "elements": []
 }
